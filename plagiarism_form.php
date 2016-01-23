@@ -37,7 +37,8 @@ class plagiarism_setup_form extends moodleform {
         $mform->addElement('html', get_string('moorspexplain', 'plagiarism_moorsp'));
         $mform->addElement('checkbox', 'moorsp_use', get_string('usemoorsp', 'plagiarism_moorsp'));
 
-        $mform->addElement('textarea', 'moorsp_student_disclosure', get_string('studentdisclosure', 'plagiarism_moorsp'), 'wrap="virtual" rows="6" cols="50"');
+        $mform->addElement('textarea', 'moorsp_student_disclosure',
+            get_string('studentdisclosure', 'plagiarism_moorsp'), 'wrap="virtual" rows="6" cols="50"');
         $mform->addHelpButton('moorsp_student_disclosure', 'studentdisclosure', 'plagiarism_moorsp');
         $mform->setDefault('moorsp_student_disclosure', get_string('studentdisclosuredefault', 'plagiarism_moorsp'));
 

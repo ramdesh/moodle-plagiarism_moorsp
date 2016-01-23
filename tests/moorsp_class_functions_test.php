@@ -31,7 +31,7 @@ define('MOORSP_STUDENT_DISCLOSURE', get_string('studentdisclosure', 'plagiarism_
 class plagiarism_moorsp_class_functions_testcase extends advanced_testcase {
     protected $course = null;
     protected $assignment = null;
-    protected $configOptions = array('use_moorsp', 'moorsp_show_student_plagiarism_info',
+    protected $configoptions = array('use_moorsp', 'moorsp_show_student_plagiarism_info',
 'moorsp_draft_submit');
 
     /**
@@ -133,13 +133,13 @@ class plagiarism_moorsp_class_functions_testcase extends advanced_testcase {
         $contentmd5 = md5("Test content");
         $result = $moorsp->handle_onlinetext($this->assignment->instanceid, $USER->id, $content);
         $this->assertTrue($result);
-        $contentrepresentation = $DB->get_record_sql(
+        $contentrep = $DB->get_record_sql(
             "SELECT * FROM {plagiarism_moorsp_files}
                                  WHERE cm = ? AND userid = ? AND " .
             "identifier = ?",
             array($this->assignment->instanceid, $USER->id, $contentmd5));
-        $this->assertNotEmpty($contentrepresentation);
-        $this->assertEquals("content_" . $contentmd5, $contentrepresentation->filename);
+        $this->assertNotEmpty($contentrep);
+        $this->assertEquals("content_" . $contentmd5, $contentrep->filename);
     }
     /**
      * Convenience function to create a testable instance of an assignment.
